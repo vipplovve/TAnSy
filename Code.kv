@@ -1,0 +1,397 @@
+Manager:
+    Password:
+    Menu:
+    Language:
+    File:
+    Sentence:
+    DataSet:
+
+<Password>:
+    name: 'Pass'
+    Image:
+        source: 'BG1.jpg'
+    BoxLayout:
+        orientation: 'vertical'
+        spacing: 25
+        padding: 25
+
+        GridLayout:
+            cols:1
+            size: root.width, root.height
+            Label:
+                text: 'Welcome To NLP'
+                font_size:48
+
+            Label:
+                text: 'By Viplove Tyagi'
+                font_size:18
+
+        GridLayout:
+            cols:2
+
+            Label:
+                text: 'Enter Your Name: '
+                font_size: 30
+
+            TextInput:
+                multiline: False
+                id: name
+                halign: 'center'
+                valign: 'middle'
+                multiline: 'true'
+                font_size: 30
+
+            Label:
+
+                text: 'Enter Your Password: '
+                font_size: 30
+
+            TextInput:
+                multiline: False
+                id: passw
+                halign: 'center'
+                valign: 'middle'
+                multiline: 'true'
+                font_size: 30
+
+        Button:
+            size_hint:(1,.4)
+            text: 'Submit'
+            size_hint:(.4,.4)
+            pos_hint: {'center_x':.5, 'center_y': .5}
+            font_size: 30
+            background_color: (157/255,157/255,167/255,1)
+            on_release:
+                root.check(name,passw)
+                app.root.current= 'Language'
+                app.root.transition.direction='left'
+
+        Button:
+            size_hint: (1,.4)
+            text: 'Quit'
+            size_hint:(.4,.4)
+            pos_hint: {'center_x':.5, 'center_y': .5}
+            background_color: (157/255,157/255,167/255,1)
+            font_size: 30
+            on_release: root.bye()
+
+<Language>:
+    name: 'Language'
+    Image:
+        source: 'BG1.jpg'
+    BoxLayout:
+        orientation: 'vertical'
+        spacing: 25
+        padding: 25
+
+        GridLayout:
+            cols:1
+            size: root.width, root.height
+
+            Label:
+                text: 'Choose Your Language: -'
+                font_size:36
+
+        GridLayout:
+            cols:2
+
+
+        Button:
+            size_hint:(1,.4)
+            text: 'English'
+            size_hint:(.4,.4)
+            pos_hint: {'center_x':.5, 'center_y': .5}
+            font_size: 30
+            background_color: (157/255,157/255,167/255,1)
+            on_release:
+                language = "English"
+                root.SetLanguage(language)
+                app.root.current= 'Menu'
+                app.root.transition.direction='left'
+
+        Button:
+            size_hint:(1,.4)
+            text: 'German'
+            size_hint:(.4,.4)
+            pos_hint: {'center_x':.5, 'center_y': .5}
+            font_size: 30
+            background_color: (157/255,157/255,167/255,1)
+            on_release:
+                root.SetLanguage('German')
+                app.root.current= 'Menu'
+                app.root.transition.direction='left'
+
+        Button:
+            size_hint:(1,.4)
+            text: 'Spanish'
+            size_hint:(.4,.4)
+            pos_hint: {'center_x':.5, 'center_y': .5}
+            font_size: 30
+            background_color: (157/255,157/255,167/255,1)
+            on_release:
+                root.SetLanguage('Spanish')
+                app.root.current= 'Menu'
+                app.root.transition.direction='left'
+
+        Button:
+            size_hint: (1,.4)
+            text: 'Go Back'
+            size_hint:(.4,.4)
+            pos_hint: {'center_x':.5, 'center_y': .5}
+            background_color: (157/255,157/255,167/255,1)
+            font_size: 30
+            on_release: 
+                app.root.current= 'Pass'
+                app.root.transition.direction='right'
+
+<Menu>:
+    name: 'Menu'
+    Image:
+        source: 'BG1.jpg'
+
+    BoxLayout:
+        orientation: 'vertical'
+        spacing: 25
+        padding: 25
+
+        GridLayout:
+            cols:2
+
+            GridLayout:
+                cols:1
+
+                Label:
+                    text: 'Welcome! '
+                    font_size: 22
+
+                Label:
+                    text: 'What Do You Want To Do?'
+                    font_size: 22
+
+        Button:
+
+            text:'Sentence Analysis'
+            font_size: 22
+            size_hint:(.4,.4)
+            pos_hint: {'center_x':.5, 'center_y': .5}
+            background_color: (157/255,157/255,167/255,1)
+            on_release:
+                app.root.current= 'Sentence'
+                app.root.transition.direction='left'
+
+        Button:
+
+            text: 'File Analysis'
+            font_size: 22
+            size_hint:(.4,.4)
+            pos_hint: {'center_x':.5, 'center_y': .5}
+            background_color: (157/255,157/255,167/255,1)
+            on_release:
+                app.root.current='File'
+                app.root.transition.direction='left'
+
+        Button:
+
+            text: 'DataSet Analysis'
+            font_size: 22
+            size_hint:(.4,.4)
+            pos_hint: {'center_x':.5, 'center_y': .5}
+            background_color: (157/255,157/255,167/255,1)
+            on_release:
+                app.root.current='DataSet'
+                app.root.transition.direction='left'
+
+        Button:
+
+            text: 'Go Back'
+            font_size: 22
+            size_hint:(.4,.4)
+            pos_hint: {'center_x':.5, 'center_y': .5}
+            background_color: (157/255,157/255,167/255,1)
+            on_release:
+                app.root.current='Language'
+                root.manager.transition.direction='right'
+
+<Sentence>:
+    name: 'Sentence'
+    Image:
+        source: 'BG1.jpg'
+    BoxLayout:
+        orientation: 'vertical'
+        size:root.width,root.height
+        spacing: 25
+        padding: 25
+
+        GridLayout:
+            cols:2
+            size:root.width,root.height
+
+            Label:
+                text:'Enter Sentence: '
+                font_size:22
+                size_hint: (.7,.7)
+
+            TextInput:
+                id: sentence
+                valign: 'middle'
+                halign: 'center'
+                multiline: 'true'
+                size_hint:(.4,.1)
+                font_size: 16
+
+        GridLayout:
+            cols:3
+            size:root.width,root.height
+
+            Button:
+                text: 'Go Back'
+                size_hint: (.2,.2)
+                font_size:22
+                background_color: (157/255,157/255,167/255,1)
+                on_release:
+                    app.root.current='Menu'
+                    root.manager.transition.direction= 'right'
+
+            Button:
+                text: 'Analyse'
+                size_hint: (.2,.2)
+                font_size:22
+                background_color: (157/255,157/255,167/255,1)
+                on_release: root.sentenceAnalysis()
+
+            Button:
+                text: 'Clear'
+                size_hint: (.2,.2)
+                font_size:22
+                background_color: (157/255,157/255,167/255,1)
+                on_release: root.clear()
+
+        Label:
+            id: analysis
+            halign: 'center'
+            valign: 'middle'
+            multiline: 'true'
+            font_size:22
+
+<File>:
+    name: 'File'
+    Image:
+        source: 'BG1.jpg'
+    BoxLayout:
+        orientation: 'vertical'
+        size:root.width,root.height
+        spacing: 25
+        padding: 25
+
+        GridLayout:
+            cols:2
+            size:root.width,root.height
+
+            Label:
+                text:'Roll No. of the Record to Be Searched: '
+                font_size:22
+                size_hint: (.7,.7)
+
+            TextInput:
+                id: file
+                valign: 'middle'
+                halign: 'center'
+                multiline: 'true'
+                size_hint:(.4,.1)
+                font_size: 32
+
+        GridLayout:
+            cols:3
+            size:root.width,root.height
+
+            Button:
+                text: 'Go Back'
+                size_hint: (.2,.2)
+                font_size:22
+                background_color: (157/255,157/255,167/255,1)
+                on_release:
+                    app.root.current='Menu'
+                    root.manager.transition.direction= 'right'
+
+            Button:
+                text: 'Analyse'
+                size_hint: (.2,.2)
+                font_size:22
+                background_color: (157/255,157/255,167/255,1)
+                on_release: root.fileAnalysis()
+
+            Button:
+                text: 'Clear'
+                size_hint: (.2,.2)
+                font_size:22
+                background_color: (157/255,157/255,167/255,1)
+                on_release: root.clear()
+
+        Label:
+            id: analysis
+            halign: 'center'
+            valign: 'middle'
+            multiline: 'true'
+            font_size:22
+
+<DataSet>:
+    name: 'DataSet'
+    Image:
+        source: 'BG1.jpg'
+    BoxLayout:
+        orientation: 'vertical'
+        size:root.width,root.height
+        spacing: 25
+        padding: 25
+
+        GridLayout:
+            cols:2
+            size:root.width,root.height
+
+            Label:
+                text:'Roll No. of the Record to Be Searched: '
+                font_size:22
+                size_hint: (.7,.7)
+
+            TextInput:
+                id: dataset
+                valign: 'middle'
+                halign: 'center'
+                multiline: 'true'
+                size_hint:(.4,.1)
+                font_size: 32
+
+        GridLayout:
+            cols:3
+            size:root.width,root.height
+
+            Button:
+                text: 'Go Back'
+                size_hint: (.2,.2)
+                font_size:22
+                background_color: (157/255,157/255,167/255,1)
+                on_release:
+                    app.root.current='Menu'
+                    root.manager.transition.direction= 'right'
+
+            Button:
+                text: 'Search'
+                size_hint: (.2,.2)
+                font_size:22
+                background_color: (157/255,157/255,167/255,1)
+                on_release: root.DatasetAnalysis()
+
+            Button:
+                text: 'Clear'
+                size_hint: (.2,.2)
+                font_size:22
+                background_color: (157/255,157/255,167/255,1)
+                on_release: root.clear()
+
+        Label:
+            id: analysis
+            halign: 'center'
+            valign: 'middle'
+            multiline: 'true'
+            font_size:22
+
