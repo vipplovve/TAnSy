@@ -33,8 +33,9 @@ class Menu(Screen):
 class Language(Screen):
     
     def SetLanguage(self, input):
+        
         lang = input
-        print(lang)
+
 
 class Sentence(Screen):
     
@@ -46,28 +47,51 @@ class Sentence(Screen):
 
         import stanza
 
-        nlp = stanza.Pipeline('en', download_method = None)
-
+        nlp = stanza.Pipeline('en', download_method = None) 
+        
         sentence = self.ids.sentence.text
 
-        answer = ""
-
-        doc = nlp(sentence)
+        doc = nlp(sentence) # Run the pipeline on the input text
         
-        for sentence in doc.sentences:
-            for token in sentence.tokens:
-                self.ids.analysis.text += token.text + ' ';
+        file = "SentenceAnalysis"
 
-        print(answer)
+        file += ".txt"
 
-        
+        with open(file, 'w') as AF:
+            print(doc, file = AF) # Look at the result
+
+        self.ids.analysis.text = "The Analysis of Entered Sentence Has been Saved!"       
 
 
 class File(Screen):
     
     def clear(self):
+
         self.ids.file.text = ''
         self.ids.analysis.text = ''
+
+    def FileAnalysis(self):
+
+        import stanza
+
+        nlp = stanza.Pipeline('en', download_method = None) 
+        
+        name = self.ids.file.text
+
+        information = ""
+
+        with open(name, 'r') as source:
+
+            information = source.read();
+
+        doc = nlp(information) # Run the pipeline on the input text
+        
+        file = "FileAnalysis.txt"
+
+        with open(file, 'w') as AF:
+            print(doc, file = AF) # Look at the result
+
+        self.ids.analysis.text = "The Analysis of Entered File Has been Saved!"
 
 class DataSet(Screen):
     
