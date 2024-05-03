@@ -15,7 +15,7 @@ class Password(Screen):
     def check(self, n, p):
         n = self.ids.name.text
         p = self.ids.passw.text
-        if n == '' and p == '':
+        if n == 'Viplove Tyagi' and p == 'TAnSy':
             self.ids.name.text = ''
             self.ids.passw.text = ''
         else:
@@ -34,6 +34,7 @@ class Language(Screen):
     
     def SetLanguage(self, input):
         
+        global lang
         lang = input
 
 
@@ -45,23 +46,70 @@ class Sentence(Screen):
 
     def sentenceAnalysis(self):
 
-        import stanza
-
-        nlp = stanza.Pipeline('en', download_method = None) 
+        global lang
         
-        sentence = self.ids.sentence.text
+        if(lang == "English"):
 
-        doc = nlp(sentence) # Run the pipeline on the input text
-        
-        file = "SentenceAnalysis"
+            import stanza
 
-        file += ".txt"
+            nlp = stanza.Pipeline('en', download_method = None) 
+            
+            sentence = self.ids.sentence.text
 
-        with open(file, 'w') as AF:
-            print(doc, file = AF) # Look at the result
+            doc = nlp(sentence) 
+            
+            file = "Analysis/SentenceAnalysisEnglish"
 
-        self.ids.analysis.text = "The Analysis of Entered Sentence Has been Saved!"       
+            file += str(len(sentence) * 153 + len(sentence) * 126)
 
+            file += ".txt"
+
+            with open(file, 'w') as AF:
+                print(doc, file = AF) 
+
+            self.ids.analysis.text = "The Analysis of Entered Sentence Has been Saved!"       
+
+        elif (lang == "German"):
+
+            import stanza
+
+            nlp = stanza.Pipeline('de', download_method = None) 
+            
+            sentence = self.ids.sentence.text
+
+            doc = nlp(sentence)
+            
+            file = "Analysis/SentenceAnalysisGerman"
+
+            file += str(len(sentence) * 153 + len(sentence) * 126)
+
+            file += ".txt"
+
+            with open(file, 'w') as AF:
+                print(doc, file = AF) 
+
+            self.ids.analysis.text = "The Analysis of Entered Sentence Has been Saved!"
+
+        else:
+
+            import stanza
+
+            nlp = stanza.Pipeline('es', download_method = None) 
+            
+            sentence = self.ids.sentence.text
+
+            doc = nlp(sentence) 
+            
+            file = "Analysis/SentenceAnalysisSpanish"
+
+            file += str(len(sentence) * 153 + len(sentence) * 126)
+
+            file += ".txt"
+
+            with open(file, 'w') as AF:
+                print(doc, file = AF) 
+
+            self.ids.analysis.text = "The Analysis of Entered Sentence Has been Saved!" 
 
 class File(Screen):
     
@@ -72,32 +120,152 @@ class File(Screen):
 
     def FileAnalysis(self):
 
-        import stanza
+        if(lang == "English"):
 
-        nlp = stanza.Pipeline('en', download_method = None) 
-        
-        name = self.ids.file.text
+            import stanza
 
-        information = ""
+            nlp = stanza.Pipeline('en', download_method = None) 
+            
+            name = self.ids.file.text
 
-        with open(name, 'r') as source:
+            information = ""
 
-            information = source.read();
+            with open(name, 'r') as source:
 
-        doc = nlp(information) # Run the pipeline on the input text
-        
-        file = "FileAnalysis.txt"
+                information = source.read();
 
-        with open(file, 'w') as AF:
-            print(doc, file = AF) # Look at the result
+            doc = nlp(information) 
+            
+            file = "Analysis/FileAnalysisEnglish.txt"
 
-        self.ids.analysis.text = "The Analysis of Entered File Has been Saved!"
+            with open(file, 'w') as AF:
+                print(doc, file = AF) 
+
+            self.ids.analysis.text = "The Analysis of Entered File Has been Saved!"     
+
+        elif (lang == "German"):
+
+            import stanza
+
+            nlp = stanza.Pipeline('de', download_method = None) 
+            
+            name = self.ids.file.text
+
+            information = ""
+
+            with open(name, 'r') as source:
+
+                information = source.read();
+
+            doc = nlp(information) 
+            
+            file = "Analysis/FileAnalysisGerman.txt"
+
+            with open(file, 'w') as AF:
+                print(doc, file = AF) 
+
+            self.ids.analysis.text = "The Analysis of Entered File Has been Saved!"
+
+        else:
+
+            import stanza
+
+            nlp = stanza.Pipeline('es', download_method = None) 
+            
+            name = self.ids.file.text
+
+            information = ""
+
+            with open(name, 'r') as source:
+
+                information = source.read();
+
+            doc = nlp(information) 
+            
+            file = "Analysis/FileAnalysisSpanish.txt"
+
+            with open(file, 'w') as AF:
+                print(doc, file = AF) 
+
+            self.ids.analysis.text = "The Analysis of Entered File Has been Saved!"
 
 class DataSet(Screen):
     
     def clear(self):
+
         self.ids.dataset.text = ''
         self.ids.analysis.text = ''
+
+    def DatasetAnalysis(self):
+
+        if(lang == "English"):
+
+            import stanza
+
+            nlp = stanza.Pipeline('en', download_method = None) 
+            
+            name = self.ids.dataset.text
+
+            information = ""
+
+            with open(name, 'r') as source:
+
+                information = source.read();
+
+            doc = nlp(information) 
+            
+            file = "Analysis/DatasetAnalysisEnglish.txt"
+
+            with open(file, 'w') as AF:
+                print(doc, file = AF) 
+
+            self.ids.analysis.text = "The Analysis of Entered File Has been Saved!"     
+
+        elif (lang == "German"):
+
+            import stanza
+
+            nlp = stanza.Pipeline('de', download_method = None) 
+            
+            name = self.ids.dataset.text
+
+            information = ""
+
+            with open(name, 'r') as source:
+
+                information = source.read();
+
+            doc = nlp(information) 
+            
+            file = "Analysis/FileAnalysisGerman.txt"
+
+            with open(file, 'w') as AF:
+                print(doc, file = AF) 
+
+            self.ids.analysis.text = "The Analysis of Entered File Has been Saved!"
+
+        else:
+
+            import stanza
+
+            nlp = stanza.Pipeline('es', download_method = None) 
+            
+            name = self.ids.dataset.text
+
+            information = ""
+
+            with open(name, 'r') as source:
+
+                information = source.read();
+
+            doc = nlp(information) 
+            
+            file = "Analysis/FileAnalysisSpanish.txt"
+
+            with open(file, 'w') as AF:
+                print(doc, file = AF) 
+
+            self.ids.analysis.text = "The Analysis of Entered File Has been Saved!"
 
 
 class Manager(ScreenManager):

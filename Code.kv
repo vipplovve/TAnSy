@@ -19,11 +19,11 @@ Manager:
             cols:1
             size: root.width, root.height
             Label:
-                text: 'Welcome To NLP'
+                text: 'Welcome To TAnSy!'
                 font_size:48
 
             Label:
-                text: 'By Viplove Tyagi'
+                text: 'By Viplove Tyagi & Taha Zuberi'
                 font_size:18
 
         GridLayout:
@@ -117,7 +117,7 @@ Manager:
             font_size: 30
             background_color: (157/255,157/255,167/255,1)
             on_release:
-                root.SetLanguage('German')
+                root.SetLanguage("German")
                 app.root.current= 'Menu'
                 app.root.transition.direction='left'
 
@@ -129,7 +129,7 @@ Manager:
             font_size: 30
             background_color: (157/255,157/255,167/255,1)
             on_release:
-                root.SetLanguage('Spanish')
+                root.SetLanguage("Spanish")
                 app.root.current= 'Menu'
                 app.root.transition.direction='left'
 
@@ -375,7 +375,7 @@ Manager:
                     root.manager.transition.direction= 'right'
 
             Button:
-                text: 'Search'
+                text: 'Analyse'
                 size_hint: (.2,.2)
                 font_size:22
                 background_color: (157/255,157/255,167/255,1)
